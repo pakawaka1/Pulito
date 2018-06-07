@@ -14,7 +14,6 @@ plugins/
 plugins/android.json
 plugins/ios.json
 
-ionic.config.json
 www/
 $RECYCLE.BIN/
 
@@ -23,5 +22,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 *.env
 
-ionic.config.json
 .node_modules/
