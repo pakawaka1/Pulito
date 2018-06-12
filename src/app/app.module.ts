@@ -9,7 +9,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
-import { environment } from './../environment/environment.ts';
+import { environment } from './../environment/environment';
 
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
