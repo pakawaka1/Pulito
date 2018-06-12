@@ -1,3 +1,5 @@
+import { GooglePlus } from '@ionic-native/google-plus';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +11,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './../environment/environment';
 
 import { Items } from '../mocks/providers/items';
@@ -44,6 +47,7 @@ export function provideSettings(storage: Storage) {
     BrowserModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -59,6 +63,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
+    GooglePlus,
     Api,
     Items,
     User,
