@@ -12,7 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from './../environment/environment';
+import { Environment } from './../environment/environment';
 
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
@@ -46,7 +46,7 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(Environment.firebase),
     AngularFireAuthModule,
     TranslateModule.forRoot({
       loader: {
