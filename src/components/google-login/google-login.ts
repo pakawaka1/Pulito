@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -9,11 +9,8 @@ import { Environment } from './../../environment/environment';
 import { Platform } from 'ionic-angular';
 
 
-@Component({
-  selector: 'google-login',
-  templateUrl: 'google-login.html'
-})
-export class GoogleLoginComponent {
+@Injectable()
+export class GoogleLoginService {
 
   user: Observable<firebase.User>;
 
@@ -54,6 +51,7 @@ export class GoogleLoginComponent {
   }
 
   googleLogin() {
+    console.log('logging in');
     if (this.platform.is('cordova')) {
       this.nativeGoogleLogin();
     } else {
