@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
+import { GoogleLoginService } from './../../components/google-login/google-login';
+
 import { User } from '../../providers';
 import { MainPage } from '../';
 
@@ -25,26 +27,35 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    private googleLogIn: GoogleLoginService) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
   }
 
-  // Attempt to login in through our User service
+  //Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
+    try {
+      this.googleLogIn.webGoogleLogin();
+      // this.user.login(this.account).subscribe((resp) => {
+        this.navCtrl.push(MainPage);
+      //}, 
+    }
+    catch {
+      (err) => {
+        this.navCtrl.push(MainPage);
+        // Unable to log in
+        let toast = this.toastCtrl.create({
+          message: this.loginErrorString,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      }
+    }
+    //});
   }
+  
 }
