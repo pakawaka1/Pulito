@@ -28,6 +28,10 @@ body {
     align-items: center;
 }
 
+.fifty-width {
+    width: 50%;
+}
+
 /* END GLOBAL */
 
 header {
@@ -40,6 +44,12 @@ header {
     border-bottom: 2px solid #ddd;
     height: 30px;
     color: #ddd;
+}
+
+.top-left-icon {
+    width: 50%;
+    margin: 0;
+    border-right: 2px solid #ddd;
 }
 
 .card {
