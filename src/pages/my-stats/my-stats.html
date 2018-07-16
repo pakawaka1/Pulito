@@ -5,14 +5,48 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>my-stats</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
+  <div class="stat-header">
+    <div class="profilePic"></div>
+    <p class="name">John Doe</p>
+  </div>
 
+  <ion-card>
+    
+    <ion-card-content>
+      <canvas #wasteCanvas></canvas>
+    </ion-card-content>
+    <p>You have {{totalWaste}}lbs of waste from this beautiful planet</p>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <canvas #calcWasteCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ul>
+    <li>
+      Plastic
+    </li>
+    <li>
+      Alum
+    </li>
+    <li>
+      Metal
+    </li>
+    <li>
+      Glass
+    </li>
+    <li>
+      Paper
+    </li>
+    <li>
+      Other
+    </li>
+  </ul>
 </ion-content>
