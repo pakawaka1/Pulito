@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
 
-import { ListPage } from './list-view';
+import { ListViewPage } from './list-view';
 
 @NgModule({
   declarations: [
-    ListPage,
+    ListViewPage,
   ],
   imports: [
-    IonicPageModule.forChild(ListPage),
+    IonicPageModule.forChild(ListViewPage),
     TranslateModule.forChild()
   ],
   exports: [
-    ListPage
+    ListViewPage
   ]
 })
 export class ListPageModule { }

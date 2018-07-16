@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
     templateUrl: 'list-view.html'
 })
 
-export class ListPage {
+export class ListViewPage {
     page: string = 'main';
     pageTitleKey: string = 'LISTVIEW_TITLE';
     pageTitle: string;
