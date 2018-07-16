@@ -1,3 +1,5 @@
+import { GooglePlus } from '@ionic-native/google-plus';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,10 +10,14 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Environment } from './../environment/environment';
 
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+import { GoogleLoginService } from '../components/google-login/google-login';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -41,6 +47,8 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(Environment.firebase),
+    AngularFireAuthModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -56,6 +64,8 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
+    GooglePlus,
+    GoogleLoginService,
     Api,
     Items,
     User,
