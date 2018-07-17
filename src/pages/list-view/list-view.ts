@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 @IonicPage()
 @Component({
     selector: 'list-view',
-    templateUrl: 'list-view.html'
+    templateUrl: 'list-view.html',
 })
 
 export class ListViewPage {
