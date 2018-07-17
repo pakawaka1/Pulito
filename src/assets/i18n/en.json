@@ -8,10 +8,12 @@
   "LOGIN": "Sign in",
   "SIGNUP": "Sign up",
 
-  "TAB1_TITLE": "Items",
-  "TAB2_TITLE": "Search",
-  "TAB3_TITLE": "Settings",
-  "TAB4_TITLE": "List View",
+
+  "TAB1_TITLE": "Map",
+  "TAB2_TITLE": "List",
+  "TAB3_TITLE": "Reports",
+  "TAB4_TITLE": "My Stats",
+
 
   "MAP_TITLE": "Map",
 

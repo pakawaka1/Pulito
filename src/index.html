@@ -15,8 +15,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+
+<!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> -->
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmC_afxSN_iOPNJWIR84B5d3EM4j7EdXA&callback=initMap"
+  type="text/javascript"></script>
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
+  
+  <section id="map-container">
+    <div id="map"></div>
+  </section>
 
   <!-- un-comment this code to enable service worker
   <script>
