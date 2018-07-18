@@ -17,7 +17,7 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { GoogleLoginService } from '../components/google-login/google-login';
-import { Environment } from '../environments/environment';
+import { Environment } from './../environment/environment';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
