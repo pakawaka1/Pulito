@@ -13,8 +13,10 @@
 
 <ion-content >
   <div class="stat-header">
-    <div class="profilePic"></div>
-    <p class="name">John Doe</p>
+    <div class="profilePic">
+    </div>
+    <h3 class="name">John Doe</h3>
+    <p class="email">email@email.com</p>
   </div>
 
   <ion-card>
@@ -22,31 +24,35 @@
     <ion-card-content>
       <canvas #wasteCanvas></canvas>
     </ion-card-content>
-    <p>You have {{totalWaste}}lbs of waste from this beautiful planet</p>
+    <h5>You have {{totalWaste}}lbs of waste from this beautiful planet</h5>
+    
   </ion-card>
   <ion-card>
     <ion-card-content>
       <canvas #calcWasteCanvas></canvas>
     </ion-card-content>
   </ion-card>
-  <ul>
-    <li>
-      Plastic
-    </li>
-    <li>
-      Alum
-    </li>
-    <li>
-      Metal
-    </li>
-    <li>
-      Glass
-    </li>
-    <li>
-      Paper
-    </li>
-    <li>
-      Other
-    </li>
-  </ul>
+  <div class="breakdown">
+    <p>Breakdown of your recycling</p>
+    <ul>
+      <li>
+        Plastic: 37 lbs
+      </li>
+      <li>
+        Aluminium: 25 lbs
+      </li>
+      <li>
+        Metal: 5 lbs
+      </li>
+      <li>
+          Glass: 17 lbs
+      </li>
+      <li>
+        Paper: 3 lbs
+      </li>
+      <li>
+        Other: 13 lbs
+      </li>
+    </ul>
+  </div>
 </ion-content>
