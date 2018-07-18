@@ -8,10 +8,12 @@
   "LOGIN": "Sign in",
   "SIGNUP": "Sign up",
 
+
   "TAB1_TITLE": "Map",
   "TAB2_TITLE": "List",
   "TAB3_TITLE": "Reports",
   "TAB4_TITLE": "My Stats",
+
 
   "MAP_TITLE": "Map",
 
@@ -40,6 +42,8 @@
   "SETTINGS_PROFILE_BUTTON": "Edit Profile",
 
   "SETTINGS_PAGE_PROFILE": "Edit Profile",
+
+  "LISTVIEW_TITLE": "List View",
 
   "WELCOME_TITLE": "Welcome",
 

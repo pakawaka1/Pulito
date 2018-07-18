@@ -1,3 +1,26 @@
 page-my-stats {
+    
+    .stat-header{
+        // background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
+        height: 30%;
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .profilePic{
+       background-color: pink;
+       height: 100px;
+       width: 100px;
+       border-radius: 50%;
+    }
+    .name{
+        color: red;
+    }
 
+    li {
+        list-style-type: none;
+    }
 }
