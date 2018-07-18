@@ -5,8 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
 import { GooglePlus } from '@ionic-native/google-plus';
-import { Environment } from './../../environment/environment';
 import { Platform } from 'ionic-angular';
+import { Environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -32,7 +32,7 @@ export class GoogleLoginService {
         'scopes': 'profile email'
       })
   
-      return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
+      // return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
   
     } catch(err) {
       console.log(err)

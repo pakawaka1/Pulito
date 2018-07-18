@@ -12,12 +12,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { Environment } from './../environment/environment';
 
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { GoogleLoginService } from '../components/google-login/google-login';
+import { Environment } from '../environments/environment';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
