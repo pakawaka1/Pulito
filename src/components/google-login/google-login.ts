@@ -10,7 +10,7 @@ import { Environment } from '../../environments/environment';
 
 
 @Injectable()
-export class GoogleLoginService {
+export class GoogleLoginComponent {
 
   user: Observable<firebase.User>;
 
@@ -23,7 +23,7 @@ export class GoogleLoginService {
   }
 
   /// Our login Methods will go here
-  async nativeGoogleLogin(): Promise<void> {
+  async nativeGoogleLogin(): Promise<any> {
     try {
   
       const gplusUser = await this.gplus.login({
@@ -32,7 +32,7 @@ export class GoogleLoginService {
         'scopes': 'profile email'
       })
   
-      // return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
+      return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
   
     } catch(err) {
       console.log(err)
