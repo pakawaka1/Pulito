@@ -1,0 +1,18 @@
+.ios page-map .pulito-green-bg, .md page-map .pulito-green-bg {
+  background-color: #2EC19E;
+  color: #eee;
+}
+
+.ios page-map .pulito-green-bg .toolbar-title, .md page-map .pulito-green-bg .toolbar-title {
+  color: #eee;
+}
+
+.ios page-map .scroll, .md page-map .scroll {
+  height: 100%;
+}
+
+.ios page-map .map, .md page-map .map {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=map.css.map */

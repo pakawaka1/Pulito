@@ -1,0 +1,31 @@
+page-my-stats .stat-header {
+  background-color: black;
+  height: 30%;
+  width: 100%;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+page-my-stats .profilePic {
+  background-color: pink;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+page-my-stats .name {
+  color: red;
+}
+/*# sourceMappingURL=my-stats.css.map */

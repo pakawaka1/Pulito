@@ -1,5 +1,5 @@
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,8 +12,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { Environment } from './../environment/environment';
 
+import { Environment } from './../environments/environment';
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
@@ -42,7 +42,7 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +64,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
+    Geolocation,
     GooglePlus,
     GoogleLoginService,
     Api,
