@@ -10,7 +10,7 @@ import { Environment } from '../../environments/environment';
 
 
 @Injectable()
-export class GoogleLoginComponent {
+export class GoogleLoginService {
 
   user: Observable<firebase.User>;
 
