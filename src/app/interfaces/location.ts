@@ -1,8 +1,9 @@
+import { Center } from './center';
 export interface ILocation {
     lat: number;
     long: number;
     name: string;
-    type: string;
+    type: Center;
     address: string;
     description: string;
 }
