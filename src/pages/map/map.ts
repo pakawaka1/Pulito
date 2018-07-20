@@ -1,9 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleLoginService } from '../../components/google-login/google-login';
-import { map } from '../../../node_modules/rxjs/operators';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
+
 
 declare var google;
 @IonicPage()
@@ -13,13 +13,13 @@ declare var google;
 })
 
 export class MapPage {
-  @ViewChild('mapContainer') mapElement: ElementRef;
+  @ViewChild('mapContainer') mapContainer: ElementRef;
   map: any;
   showRecycleView: boolean = false;
   showTrashView:  boolean = true;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, public http: Http) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, private http: HttpClient) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPage');
@@ -39,7 +39,7 @@ export class MapPage {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
 
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
       
      
     }, (err) => {
@@ -50,19 +50,17 @@ export class MapPage {
       console.log(success);
     }
   };
-   
 
   loadRecycleMarkers() {
-    this.http.get('assets/data.recycleMarkers.json')
-    .map((res) => res.json())
-    .subscribe(data => {
+    this.http.get('../../../www/assets/data/recycleMarkers.json')
+      .subscribe(data => {
       this.addRecycleMarkersToMap(data);
     });
   }
 
+  
   loadTrashMarkers() {
-    this.http.get('assets/data.trashMarkers.json')
-    .map((res) => res.json())
+    this.http.get('../../../www/assets/data/trashMarker.json')
     .subscribe(data => {
       this.addTrashMarkersToMap(data);
     });
@@ -90,7 +88,6 @@ export class MapPage {
     
   toggleTrash(trashMarker) {
     this.showTrashView = !this.showTrashView;
-    console.log(this.toggleTrash);
   }
 }
 
