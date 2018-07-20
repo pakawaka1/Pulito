@@ -90,7 +90,7 @@ export class MapPage {
     
   toggleTrash(trashMarker) {
     this.showTrashView = !this.showTrashView;
-  
+    console.log(this.toggleTrash);
   }
 }
 

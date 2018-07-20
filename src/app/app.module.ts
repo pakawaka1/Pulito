@@ -1,4 +1,5 @@
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Http } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -45,6 +46,7 @@ export function provideSettings(storage: Storage) {
     MyApp,
   ],
   imports: [
+    Http,
     BrowserModule,
     HttpClientModule,
     AngularFireModule.initializeApp(Environment.firebase),
