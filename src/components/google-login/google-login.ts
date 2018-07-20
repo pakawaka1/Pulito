@@ -5,8 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
 import { GooglePlus } from '@ionic-native/google-plus';
-import { Environment } from '../../environments/environment';
 import { Platform } from 'ionic-angular';
+// import { Environment } from '../../environments/environment';
 
 
 @Injectable()

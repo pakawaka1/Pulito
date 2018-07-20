@@ -1,7 +1,7 @@
 page-my-stats {
     
     .stat-header{
-        background-color: black;
+        // background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
         height: 30%;
         width: 100%;
         padding: 0;
@@ -20,4 +20,7 @@ page-my-stats {
         color: red;
     }
 
+    li {
+        list-style-type: none;
+    }
 }

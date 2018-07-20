@@ -62,7 +62,7 @@ export class MyStatsPage {
         this.calcWasteChart = new Chart(this.calcWasteCanvas.nativeElement, {
             type: 'pie',
             data: {
-                labels: ["Plastic", "Aluminium", "Metal", "Glass", "Other", "Paper"],
+                labels: ["Plastic", "Aluminium", "Metal", "Glass", "Paper", "Other"],
                 datasets: [{
                     label: '# of Votes',
                     data: [37, 25, 5, 17, 3, 13],
