@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Platform } from 'ionic-angular';
-// import { Environment } from '../../environments/environment';
+import { Environment } from '../../environments/environment';
 
 
 @Injectable()
