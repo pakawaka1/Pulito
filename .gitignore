@@ -2,4 +2,4 @@
 www/
 node_modules
 package-lock.json
-environments
+src/environments

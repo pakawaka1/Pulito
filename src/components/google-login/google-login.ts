@@ -5,8 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
 import { GooglePlus } from '@ionic-native/google-plus';
-import { Environment } from './../../environment/environment';
 import { Platform } from 'ionic-angular';
+import { Environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -23,7 +23,7 @@ export class GoogleLoginService {
   }
 
   /// Our login Methods will go here
-  async nativeGoogleLogin(): Promise<void> {
+  async nativeGoogleLogin(): Promise<any> {
     try {
   
       const gplusUser = await this.gplus.login({

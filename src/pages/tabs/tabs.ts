@@ -14,6 +14,7 @@ export class TabsPage {
   tab2Root: any = Tab2Root;
   tab3Root: any = Tab3Root;
   tab4Root: any = Tab4Root;
+
   // For translating service tabs only, tabs are set my html
   // tab1Title = " ";
   // tab2Title = " ";
@@ -27,5 +28,6 @@ export class TabsPage {
     //   this.tab3Title = values['TAB3_TITLE'];
     //   this.tab4Title = values['TAB4_TITLE'];
     // });
+
   }
 }

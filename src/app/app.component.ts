@@ -27,6 +27,7 @@ export class MyApp {
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' },
+    { title: 'List', component: 'ListPage'},
     { title: 'Map', component: 'MapPage' },
     { title: 'Reports', component: 'ReportsPage' },
     { title: 'My Stats', component: 'MyStatsPage' }
