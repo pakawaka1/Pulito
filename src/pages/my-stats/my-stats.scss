@@ -1,25 +1,25 @@
 page-my-stats {
     
-    .stat-header{
+    .stat-header {
         // background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
         height: 30%;
         width: 100%;
         padding: 0;
+        margin-top: 15px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .profilePic{
+    .profilePic {
        background-color: pink;
        height: 100px;
        width: 100px;
        border-radius: 50%;
     }
-    .name{
+    .name {
         color: red;
     }
-
     li {
         list-style-type: none;
     }
