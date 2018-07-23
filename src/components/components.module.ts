@@ -7,8 +7,8 @@ import { GoogleLoginService } from './google-login/google-login';
 @NgModule({
 	declarations: [GoogleLoginService],
 	imports: [
-		CommonModule, // <--- for angular directives
-		IonicModule  // <--- for ionic components
+		CommonModule,
+		IonicModule
 	],
 	exports: [GoogleLoginService]
 })
