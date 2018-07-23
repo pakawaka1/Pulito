@@ -1,4 +1,4 @@
-export const environment = {
+export const Environment = {
     firebase: {
         apiKey: "AIzaSyDhKVIFnhb4VPY2ov3q8ZYFzuQ39atBOjI",
         authDomain: "cucumber-81d75.firebaseapp.com",

@@ -1,3 +1,14 @@
-page-tabs {
 
+.tabs-md .tab-button[aria-selected="true"] .tab-button-icon  {
+    color: var(--pulito-green);
+}
+
+.tabs-md .tab-button[aria-selected="true"] {
+    color: var(--pulito-green);
+}
+
+.centeredBtn {
+    width: 100px;
+    height: 100px;
+    color: var(--pulito-green);
 }
