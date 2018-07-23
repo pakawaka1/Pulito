@@ -12,16 +12,11 @@ import 'rxjs/add/operator/map';
 })
 
 export class MapPage {
-  // google;
- 
   @ViewChild('map') mapElement: ElementRef;
-  map: any;
-  showRecycleView: boolean = true;
-  showTrashView:  boolean = true;
-  public recycleList: any[] = []; 
-  public trashList: any[] = [];
+  private map: any;
+  private recycleList: any[] = []; 
+  private trashList: any[] = [];
 
- 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, private http: HttpClient, private toastCtrl: ToastController ) { }
   
   ionViewWillEnter() {
@@ -30,21 +25,19 @@ export class MapPage {
 
   loadMap() {
     this.geolocation.getCurrentPosition().then((position:any) => {
-      // console.log(position)
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
       let mapOptions = {
         center: latLng,
         zoom: 10, 
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+      };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.loadRecycleMarkers();
       this.loadTrashMarkers();
     }, err => {
       const toast = this.toastCtrl.create({
-        message: 'Please enable your location services for this app to use this feature',
+        message: 'Please enable your location services for this feature',
         duration: 3000
       });
       toast.present();
@@ -71,9 +64,9 @@ export class MapPage {
       recycleMarker.setMap(this.map);
       google.maps.event.addListener(recycleMarker, 'click', () => {
         infowindow.open(this.map, recycleMarker);
-      }) 
-      this.recycleList.push(recycleMarker)
-    }
+      }) ;
+      this.recycleList.push(recycleMarker);
+    };
   }
 
   loadTrashMarkers() {
@@ -95,7 +88,7 @@ export class MapPage {
       trashMarker.setMap(this.map);
       google.maps.event.addListener(trashMarker, 'click', () => {
         infowindow.open(this.map, trashMarker);
-      })
+      });
       this.trashList.push(trashMarker);
     }
   }
@@ -103,19 +96,19 @@ export class MapPage {
   toggleTrash(){
     for(let recycle of this.recycleList){
       recycle.setMap(null)
-    }
+    };
     for(let trash of this.trashList){
       trash.setMap(this.map)
-    }
+    };
   }
         
   toggleRecycle() {
     for(let trash of this.trashList){
       trash.setMap(null)
-    }
+    };
     for(let recycle of this.recycleList){
       recycle.setMap(this.map)
-    }
+    };
   }
 }
  
