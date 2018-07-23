@@ -11,11 +11,18 @@
 
 </ion-header>
 <ion-content>
+    <!-- <ion-buttons end>
+        <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>  -->
   <div class="top-icons flex-container">
-    <button ion button color='white' class="top-left-icon" (toggle)="toggleRecycle()">Recycle</button>
-    <button ion button color='white' class="top-left-icon" (click)="toggleTrash()">Trash</button>
+    <button ion button color='white' class="top-left-icon" (click)="toggleRecycle()">Recycle</button>
+    <button ion button color='white' class="top-left-icon" (click)="toggleTrash()"> <ion-icon ios="ios-trash-outline" md="md-trash"></ion-icon></button>
   </div>
   <div #map id="map"></div> 
+  <!-- <div id="right-panel">
+    <button ion button color='white' class="top-left-icon" (toggle)="toggleRecycle()">Recycle</button>
+    <button ion button color='white' class="top-left-icon" (click)="toggleTrash()">Trash</button>
+  </div> -->
     <!-- <div #map id="map" *ngIf="showRecycleView"></div>
     <div #map id="map" *ngIf="showTrashView"></div> -->
 </ion-content>
