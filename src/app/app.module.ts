@@ -12,6 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { Environment } from './../environments/environment';
 import { Items } from '../mocks/providers/items';
@@ -50,6 +51,7 @@ export function provideSettings(storage: Storage) {
     HttpClientModule,
     AngularFireModule.initializeApp(Environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
