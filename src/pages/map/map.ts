@@ -29,7 +29,9 @@ export class MapPage {
       let mapOptions = {
         center: latLng,
         zoom: 10, 
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        fullscreenControl: false,
+        streetViewControl: false
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -38,7 +40,7 @@ export class MapPage {
     }, err => {
       const toast = this.toastCtrl.create({
         message: 'Please enable your location services for this feature',
-        duration: 3000
+        duration: 4000
       });
       toast.present();
     });
@@ -91,6 +93,15 @@ export class MapPage {
       });
       this.trashList.push(trashMarker);
     }
+  }
+
+  bothMarkers(){
+    for(let recycle of this.recycleList){
+      recycle.setMap(this.map)
+    };
+    for(let trash of this.trashList){
+      trash.setMap(this.map)
+    };
   }
 
   toggleTrash(){
