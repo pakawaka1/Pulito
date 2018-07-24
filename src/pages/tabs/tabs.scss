@@ -8,8 +8,17 @@
 }
 
 .camera-button {
-    min-width: 100px;
-    min-height: 100px;
+    width: 70px;
+    height: 70px;
+    padding: 0px;
     background-color: var(--pulito-green);
-    border: 1px dashed red;
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 3px 3px 10px hsl(0%, 0%, 80);
+
+    ion-icon{
+        font-size: 50px;
+    }
 }
