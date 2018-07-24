@@ -7,8 +7,23 @@
     color: var(--pulito-green);
 }
 
-.centeredBtn {
-    width: 100px;
-    height: 100px;
-    color: var(--pulito-green);
+
+.tabbar{
+    height: 55px;
+}
+
+.camera-button {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    background-color: var(--pulito-green);
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 3px 3px 10px hsl(0%, 0%, 80);
+
+    ion-icon{
+        font-size: 50px;
+    }
 }

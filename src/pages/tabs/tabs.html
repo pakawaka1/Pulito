@@ -1,8 +1,13 @@
+<!-- <ion-content> -->
+<ion-fab center bottom>
+  <button ion-fab class="camera-button" (click)="onTakePicture()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+<!-- </ion-content> -->
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Map" tabIcon="map"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="List" tabIcon="list-box"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="" tabIcon="add" (ionSelect)="onTakePicture()">
-    <button ion-button>+</button>
+  <!-- <button ion-button color="danger">+</button> -->
+  <ion-tab [root]="tab3Root" tabTitle="" (ionSelect)="onTakePicture()">
   </ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Reports" tabIcon="text"></ion-tab>
   <ion-tab [root]="tab5Root" tabTitle="My Stats" tabIcon="pie"></ion-tab>
