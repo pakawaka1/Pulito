@@ -2,9 +2,11 @@
   <div class="splash-bg">
     <img class="logo" src="../../assets/img/white-logo.png" alt="Pulito Logo"/>
   </div>
-  <div padding>
-    <h3>Hey there fellow Earthling!</h3>
-    <p>We're glad you've decided to join us on our quest to clean up our planet</p>
-    <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }} with Google</button>
+  <div padding class="bottom">
+    <div class="bottom-wrap">
+      <h3 class="text">Hey there fellow Earthling!</h3>
+      <p class="text">We're glad you've decided to join us on our quest to clean up our planet</p>
+      <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }} with Google</button>
+    </div>
   </div>
 </ion-content>
