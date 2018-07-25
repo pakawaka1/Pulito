@@ -6,8 +6,10 @@
 
 <ion-content>
     <div class="top-icons flex-container">
-        <div class="top-left-icon fifty-width">Icon</div>
-        <div class="fifty-width">Icon</div>    
+        <button ion button color='white' class="top-left-icon" (click)="toggleRecycle()"><i class="fa fa-recycle" aria-hidden="true"></i></button>
+        <button ion button color='white' class="top-left-icon" (click)="toggleTrash()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        <button ion button color='white' class="top-left-icon" (click)="bothMarkers()"><i class="fa fa-recycle" aria-hidden="true"></i> / <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
     </div>
     <div class="card flex-container" *ngFor="let location of staticLocations">
         <div class="card-left flex-container align-center justify-center flex-direction-column">
