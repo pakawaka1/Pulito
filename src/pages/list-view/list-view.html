@@ -6,63 +6,24 @@
 
 <ion-content>
     <div class="top-icons flex-container">
-        <div class="top-left-icon fifty-width">Icon</div>
-        <div class="fifty-width">Icon</div>
-        
+        <button ion button color='white' class="top-left-icon" (click)="toggleRecycle()"><i class="fa fa-recycle" aria-hidden="true"></i></button>
+        <button ion button color='white' class="top-left-icon" (click)="toggleTrash()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        <button ion button color='white' class="top-left-icon" (click)="bothMarkers()"><i class="fa fa-recycle" aria-hidden="true"></i> / <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
     </div>
-    <div class="card flex-container">
+    <div class="card flex-container" *ngFor="let location of staticLocations">
         <div class="card-left flex-container align-center justify-center flex-direction-column">
             <span>Icon</span>
-            <span>0.1 mi</span>
+            <span>{{ getDistanceFromLatLonInMi(location.lat, location.long, myLat, myLong) }} mi</span>
             <span>Away</span>
         </div>
         <div class="card-right flex-container flex-direction-column">
-            <h3>Title of Post</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi exercitationem sunt dignissimos. Repellendus ad distinctio nobis nihil vero vitae minima.</p>
+            <h3>{{ location.name }}</h3>
+            <p><strong>Type:</strong> {{ location.type }}</p>
+            <p><strong>Address:</strong> {{ location.address }}</p>
+            <p>{{ location.description }}</p>
         </div>
     </div>
-    <div class="card flex-container">
-        <div class="card-left flex-container align-center justify-center flex-direction-column">
-            <span>Icon</span>
-            <span>0.1 mi</span>
-            <span>Away</span>
-        </div>
-        <div class="card-right flex-container flex-direction-column">
-            <h3>Title of Post</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi exercitationem sunt dignissimos. Repellendus ad distinctio nobis nihil vero vitae minima.</p>
-        </div>
-    </div>
-    <div class="card flex-container">
-        <div class="card-left flex-container align-center justify-center flex-direction-column">
-            <span>Icon</span>
-            <span>0.1 mi</span>
-            <span>Away</span>
-        </div>
-        <div class="card-right flex-container flex-direction-column">
-            <h3>Title of Post</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi exercitationem sunt dignissimos. Repellendus ad distinctio nobis nihil vero vitae minima.</p>
-        </div>
-    </div>
-    <div class="card flex-container">
-        <div class="card-left flex-container align-center justify-center flex-direction-column">
-            <span>Icon</span>
-            <span>0.1 mi</span>
-            <span>Away</span>
-        </div>
-        <div class="card-right flex-container flex-direction-column">
-            <h3>Title of Post</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi exercitationem sunt dignissimos. Repellendus ad distinctio nobis nihil vero vitae minima.</p>
-        </div>
-    </div>
-    <div class="card flex-container">
-        <div class="card-left flex-container align-center justify-center flex-direction-column">
-            <span>Icon</span>
-            <span>0.1 mi</span>
-            <span>Away</span>
-        </div>
-        <div class="card-right flex-container flex-direction-column">
-            <h3>Title of Post</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi exercitationem sunt dignissimos. Repellendus ad distinctio nobis nihil vero vitae minima.</p>
-        </div>
-    </div>
+   
+
 </ion-content>
