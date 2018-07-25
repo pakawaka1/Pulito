@@ -75,5 +75,33 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+// @import "roboto";
+// @import "noto-sans";
+
+@font-face{
+  font-family: 'Brandon Grotesque';
+  font-style: light;
+  font-weight: 300;
+  src: url('../assets/fonts/brandon/Brandon_light.otf');
+}
+@font-face{
+  font-family: 'Brandon Grotesque';
+  font-style: regular;
+  font-weight: 400;
+  src: url('../assets/fonts/brandon/Brandon_reg.otf');
+}
+@font-face{
+  font-family: 'Brandon Grotesque';
+  font-style: bold;
+  font-weight: 700;
+  src: url('../assets/fonts/brandon/Brandon_bld.otf');
+}
+
+$font-family-base: "Brandon Grotesque";
+body{
+  font-family: "Brandon Grotesque" !important;
+  font-weight: 400 !important;
+}
+p,h1,h2,h3,div{
+  font-family: "Brandon Grotesque" !important;
+}
