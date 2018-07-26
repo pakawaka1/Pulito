@@ -31,7 +31,7 @@ export class MapPage {
         zoom: 10, 
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         fullscreenControl: false,
-        streetViewControl: false,
+        streetViewControl: false
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
