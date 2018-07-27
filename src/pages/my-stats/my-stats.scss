@@ -1,24 +1,31 @@
+.page-title{
+    color: #fff;
+}
 page-my-stats {
-    
     .stat-header {
+        background-color: hsla(0, 0%, 10%, 0.5);
         // background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
-        height: 30%;
         width: 100%;
-        padding: 0;
-        margin-top: 15px;
+        padding: 30px 0px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: #fff;
     }
     .profilePic {
        background-color: pink;
-       height: 100px;
-       width: 100px;
+       border: 3px solid #fff;
+       height: 150px;
+       width: 150px;
        border-radius: 50%;
     }
-    .name {
-        color: red;
+    .email{
+        margin: 0px;
+    }
+
+    .card-md h5{
+        font-size: 20px;
     }
     li {
         list-style-type: none;
