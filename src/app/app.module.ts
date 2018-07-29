@@ -19,6 +19,8 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { GoogleLoginService } from '../components/google-login/google-login';
+// import { ModalPage } from '../pages/modal/modal';
+// import { ModalController } from 'ionic-angular';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -43,7 +45,7 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,

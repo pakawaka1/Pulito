@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IReport } from '../../app/interfaces/report';
 import { Geolocation } from '@ionic-native/geolocation';
-import { ModalController } from 'ionic-angular';
+import { Modal, ModalController, ModalOptions } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the ReportsPage page.
@@ -37,11 +38,15 @@ export class ReportsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public geolocation: Geolocation,
-    public modalCtrl : ModalController
+    public modal : ModalController
   ) {
   }
 
   public openModal(){
+    const newReportModal: Modal = this.modal.create('ModalPage');
+
+    newReportModal.present();
+
     console.log('Modal button does a thing!');
   }
 
