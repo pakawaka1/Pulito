@@ -4,5 +4,4 @@ export interface IUser {
     email: string;
     score: number;
     trashPickups: string[];
-
 }
