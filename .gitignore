@@ -3,4 +3,3 @@ www/
 node_modules
 package-lock.json
 src/environments
-src/environment
