@@ -1,3 +1,21 @@
 page-reports {
+    .report-card{
+        display: grid;
+        grid-template-columns: 75px 1fr;
+    }
+    .location{
+        // border: 1px dashed red;
+    }
+    .description{
+        // border: 1px dashed blue;
+        margin-left: 0px;
+        h3{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        p{
+            font-size: 14px
+        }
+    }
 
 }
