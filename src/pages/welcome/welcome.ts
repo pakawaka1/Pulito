@@ -22,13 +22,8 @@ export class WelcomePage {
   login() {
     //Attempt to login in through our User service
     try {
-<<<<<<< HEAD
       this.googleLogIn.googleLogin();
       //this.user.login(this.account).subscribe((resp) => {
-=======
-      // this.googleLogIn.webGoogleLogin();
-      // this.user.login(this.account).subscribe((resp) => {
->>>>>>> 401ad784785a6a27815705787c795519cf4e9d2e
         this.navCtrl.push(MainPage);
       //},
     }
