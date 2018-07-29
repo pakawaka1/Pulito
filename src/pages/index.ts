@@ -8,6 +8,6 @@ export const MainPage = "TabsPage";
 // The initial root pages for our tabs (remove if not using tabs)
 export const Tab1Root = "MapPage";
 export const Tab2Root = "ListViewPage";
-export const Tab3Root = "ReportsPage";
-export const Tab4Root = "";
+export const Tab3Root = "";
+export const Tab4Root = "ReportsPage";
 export const Tab5Root = "MyStatsPage";
