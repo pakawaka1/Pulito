@@ -17,7 +17,7 @@ import { IReport } from '../../app/interfaces/report';
 export class ReportsPage {
 
   public reports:IReport[] = [{
-    title: 'Matress',
+    title: 'Mattress',
     location: 20,
     description: 'Somebody left their mattress on the side of the road.'
   },{
