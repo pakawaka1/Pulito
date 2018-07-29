@@ -1,3 +1,32 @@
 page-reports {
+    .body{
+        background-color:hsl(200, 30%, 96%);
+    }
+    .report-card{
+        display: grid;
+        grid-template-columns: 75px 1fr;
+    }
+    .location{
+        font-weight: 100;
+
+        .fa{
+            color: hsl(0, 0%, 70%);
+        }
+    }
+    .description{
+        margin-left: 0px;
+        h3{
+            margin-bottom: 3px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        p{
+            font-size: 14px;
+        }
+    }
+
+    .address{
+        margin-top: 0px;
+    }
 
 }

@@ -7,12 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>reports</ion-title>
+    <ion-title>Reports</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding class="body">
+  <ion-card class="report-card" *ngFor="let report of reports">
+    <div class="location flex-container align-center justify-center flex-direction-column">
+      <span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></span>
+      <span>{{ getDistanceFromLatLonInMi(report.lat, report.long, myLat, myLong) }} mi</span>
+      <span>Away</span>
+    </div>
+    <div class="description card-right flex-container flex-direction-column">
+      <h3>{{ report.title }}</h3>
+      <p class="address"><strong>Location:</strong> {{ report.location }}</p>
+      <p>{{ report.description }}</p>
 
-<ion-content padding>
+    </div>
+    
+  </ion-card>
 
 </ion-content>

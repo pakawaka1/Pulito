@@ -1,3 +1,29 @@
-page-tabs {
 
+.tabs-md .tab-button[aria-selected="true"] .tab-button-icon  {
+    color: var(--pulito-green);
+}
+
+.tabs-md .tab-button[aria-selected="true"] {
+    color: var(--pulito-green);
+}
+
+
+.tabbar{
+    height: 55px;
+}
+
+.camera-button {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    background-color: var(--pulito-green);
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 3px 3px 10px hsl(0%, 0%, 80);
+
+    ion-icon{
+        font-size: 50px;
+    }
 }
