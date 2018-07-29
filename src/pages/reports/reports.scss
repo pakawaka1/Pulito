@@ -7,18 +7,26 @@ page-reports {
         grid-template-columns: 75px 1fr;
     }
     .location{
-        // border: 1px dashed red;
+        font-weight: 100;
+
+        .fa{
+            color: hsl(0, 0%, 70%);
+        }
     }
     .description{
-        // border: 1px dashed blue;
         margin-left: 0px;
         h3{
+            margin-bottom: 3px;
             font-size: 20px;
             font-weight: 700;
         }
         p{
             font-size: 14px;
         }
+    }
+
+    .address{
+        margin-top: 0px;
     }
 
 }
