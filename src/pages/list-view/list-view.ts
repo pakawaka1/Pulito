@@ -25,7 +25,7 @@ export class ListViewPage implements OnInit {
         long: -119.788517,
         name: "Mid Valley Disposal",
         description: "The Disposal from the mid valley...",
-        type: "trash",
+        type: "landfill",
         address: '1234 main st.'
     },
     {
@@ -33,7 +33,7 @@ export class ListViewPage implements OnInit {
         long: -119.755236,
         name: "Orange Avenue Disposal",
         description: "I like oranges...",
-        type: "trash",
+        type: "landfill",
         address: '5678 medium rd.'
     }]
 
