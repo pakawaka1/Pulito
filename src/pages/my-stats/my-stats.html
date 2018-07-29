@@ -6,24 +6,27 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>my-stats</ion-title>
+    <ion-title class="page-title">My Stats</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content>
+<ion-content class="graphs-section">
   <div class="stat-header">
-    <div class="profilePic">
+    <div class="overlay">
+      <div class="profilePic"></div>
+      <h3 class="name">Jane Doe</h3>
+      <p class="email">jdoe@gmail.com</p>
     </div>
-    <h3 class="name">John Doe</h3>
-    <p class="email">email@email.com</p>
   </div>
+
+  
 
   <ion-card>
     <ion-card-content>
       <canvas #wasteCanvas></canvas>
     </ion-card-content>
-    <h5>You have removed {{totalWaste}}lbs of waste from this beautiful planet!</h5>
+    <h5 class="waste-removed">You have removed <strong>{{totalWaste}}lbs</strong> of waste from our beautiful planet!</h5>
     
   </ion-card>
   <ion-card>
@@ -31,7 +34,7 @@
       <canvas #calcWasteCanvas></canvas>
     </ion-card-content>
   </ion-card>
-  <div class="breakdown">
+  <!-- <div class="breakdown">
     <p>Breakdown of your recycling</p>
     <ul>
       <li>
@@ -53,5 +56,5 @@
         Other: 13 lbs
       </li>
     </ul>
-  </div>
+  </div> -->
 </ion-content>

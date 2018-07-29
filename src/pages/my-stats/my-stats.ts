@@ -34,8 +34,8 @@ export class MyStatsPage {
                     label: '# of Votes',
                     data: [25,75],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)'
                     ],
                     hoverBackgroundColor: [
                         "#FF6384",
@@ -67,12 +67,12 @@ export class MyStatsPage {
                     label: '# of Votes',
                     data: [37, 25, 5, 17, 3, 13],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(251, 159, 64, 0.2)'
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(251, 159, 64, 0.8)'
                     ],
                     hoverBackgroundColor: [
                         "#FF6384",

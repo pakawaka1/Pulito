@@ -1,25 +1,49 @@
+.page-title{
+    color: #fff;
+}
+.graphs-section{
+    background-color: var(--background-color);
+}
+
 page-my-stats {
-    
     .stat-header {
-        // background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
-        height: 30%;
+        // background-color: hsla(0, 0%, 10%, 0.5);
+        background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
+        background-size: 100%;
         width: 100%;
-        padding: 0;
-        margin-top: 15px;
+        height: 300px;
+        color: #fff;
+    }
+
+    .overlay{
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: hsla(0, 0%, 10%, 0.9);
     }
+
     .profilePic {
-       background-color: pink;
-       height: 100px;
-       width: 100px;
+    background-image: url("../../assets/img/adult-attractive-beautiful-415829.jpg");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center center;
+       border: 3px solid #fff;
+       height: 150px;
+       width: 150px;
        border-radius: 50%;
     }
-    .name {
-        color: red;
+
+    .email{
+        margin: 0px;
     }
+
+    .card-md h5{
+        font-size: 20px;
+    }
+
     li {
         list-style-type: none;
     }
