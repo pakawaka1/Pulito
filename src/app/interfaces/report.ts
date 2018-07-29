@@ -1,5 +1,7 @@
 export interface IReport {
     title: string;
-    location: number;
+    location: string;
     description: string;
+    lat?: number;
+    long?: number;
 }
