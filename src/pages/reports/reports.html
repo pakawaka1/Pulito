@@ -13,15 +13,16 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="report-card">
+  <ion-card class="report-card" *ngFor="let report of reports">
     <div class="location card-left flex-container align-center justify-center flex-direction-column">
       <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-      <span>20 mi</span>
+      <span>{{ report.location }} mi</span>
       <span>Away</span>
     </div>
     <div class="description card-right flex-container flex-direction-column">
-      <h3>Title of Post</h3>
-      <p>A short description of the trash report.</p>
+      <h3>{{ report.title }}</h3>
+      <p><strong>Location:</strong> {{ report.location }}</p>
+      <p>{{ report.description }}</p>
 
     </div>
     

@@ -1,5 +1,5 @@
 export interface IReport {
     title: string;
-    location: string;
+    location: number;
     description: string;
 }
