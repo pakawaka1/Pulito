@@ -1,6 +1,6 @@
 page-reports {
     .body{
-        background-color:hsl(200, 30%, 96%);
+        background-color: var(--background-color);
     }
     .report-card{
         display: grid;
