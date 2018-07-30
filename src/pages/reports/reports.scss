@@ -2,6 +2,13 @@ page-reports {
     .body{
         background-color: var(--background-color);
     }
+
+    button.report-button{
+        background-color: var(--pulito-green);
+        &.activated {
+            background-color: var(--pulito-green);
+          }
+    }
     .report-card{
         display: grid;
         grid-template-columns: 75px 1fr;
