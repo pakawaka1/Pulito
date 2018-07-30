@@ -20,7 +20,7 @@
         <div class="card-right flex-container flex-direction-column">
             <h3>{{ location.name }}</h3>
             <p><strong>Type:</strong></p>
-            <div  *ngFor="let type of location.type">{{ type }}</div>
+            <div  *ngFor="let type of location.type"><p>{{ type }}</p></div>
   
             <p><strong>Address:</strong> {{ location.address }}</p>
             <p>{{ location.description }}</p>
