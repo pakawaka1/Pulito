@@ -19,8 +19,7 @@ export class ModalPage {
   }
 
   ionViewWillLoad() {
-    const data = this.navParams.get('data');
-    console.log(data);
+    
   }
   
   ionViewDidLoad() {
@@ -28,11 +27,7 @@ export class ModalPage {
   }
 
   closeModal() {
-    const data = {
-      name: 'John Doe',
-      occupation: 'Milkman'
-    };
-    this.view.dismiss(data);
+    this.view.dismiss();
   }
 
 }
