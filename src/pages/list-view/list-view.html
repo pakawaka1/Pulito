@@ -9,21 +9,20 @@
         <button ion button color='white' class="top-left-icon" (click)="toggleRecycle()"><i class="fa fa-recycle" aria-hidden="true"></i></button>
         <button ion button color='white' class="top-left-icon" (click)="toggleTrash()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
         <button ion button color='white' class="top-left-icon" (click)="bothMarkers()"><i class="fa fa-recycle" aria-hidden="true"></i> / <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-
     </div>
-    <div class="card flex-container" *ngFor="let location of locations">
+    <div class="list-item flex-container" *ngFor="let location of locations">
         <div class="card-left flex-container align-center justify-center flex-direction-column">
-            <span>Icon</span>
+            <span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></span>
             <span>{{ getDistanceFromLatLonInMi(location.latitude, location.longitude, myLat, myLong) }} mi</span>
             <span>Away</span>
         </div>
         <div class="card-right flex-container flex-direction-column">
             <h3>{{ location.name }}</h3>
-            <p><strong>Type:</strong></p>
-            <div  *ngFor="let type of location.type"><p>{{ type }}</p></div>
+            <p class="list-type"><strong>Type: </strong><span *ngFor="let type of location.type">{{ type }} </span></p>
+            <!-- <div  *ngFor="let type of location.type"><p>{{ type }}</p></div> -->
   
-            <p><strong>Address:</strong> {{ location.address }}</p>
-            <p>{{ location.description }}</p>
+            <p class="list-location"><strong>Address:</strong> {{ location.address }}</p>
+            <p class="list-description">{{ location.description }}</p>
         </div>
     </div>
    

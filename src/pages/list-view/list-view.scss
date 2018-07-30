@@ -68,11 +68,16 @@ header {
     margin: 0;
     border-right: 2px solid #ddd;
 }
-
-.card {
+.card{
+    
+}
+.list-item {
     border-bottom: 2px solid #ddd;
-    padding: 20px;
+    padding: 10px;
     background-color: #fff;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    grid-gap: 10px;
 }
 
 .card-left {
@@ -84,7 +89,7 @@ header {
 }
 
 .card-right {
-    margin-left: 50px;
+    // margin-left: 50px;
     align-items: flex-start;
     text-align: left;
 }

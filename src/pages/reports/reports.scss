@@ -12,6 +12,7 @@ page-reports {
     .report-card{
         display: grid;
         grid-template-columns: 75px 1fr;
+        padding: 13px;
     }
     .location{
         font-weight: 100;
