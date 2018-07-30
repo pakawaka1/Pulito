@@ -14,7 +14,7 @@
     <div class="card flex-container" *ngFor="let location of locations">
         <div class="card-left flex-container align-center justify-center flex-direction-column">
             <span>Icon</span>
-            <span>{{ getDistanceFromLatLonInMi(location.lat, location.long, myLat, myLong) }} mi</span>
+            <span>{{ getDistanceFromLatLonInMi(location.latitude, location.longitude, myLat, myLong) }} mi</span>
             <span>Away</span>
         </div>
         <div class="card-right flex-container flex-direction-column">
