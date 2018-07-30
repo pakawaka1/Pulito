@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IReport } from '../../app/interfaces/report';
 import { Geolocation } from '@ionic-native/geolocation';
+import { firebaseService } from '../../app/services/firebase';
+import { take } from 'rxjs/operators';
 
 /**
  * Generated class for the ReportsPage page.
@@ -19,39 +21,46 @@ export class ReportsPage {
 
   public myLat;
   public myLong;
+  public reports:IReport[];
 
-  public reports:IReport[] = [{
-    title: 'Mattress',
-    location: '700 Van Ness Ave.',
-    description: 'Somebody left their mattress on the side of the road.'
-  },{
-    title: 'A really dirty alley',
-    location: '31 Spooner Street',
-    description: 'The alley behind my house is filthy'
-  },{
-    title: 'Old couch',
-    location: '742 Evergreen Terrace',
-    description: 'somebody just dumped an old couch in the field right behind my house'
-  }]
+  // public reports:IReport[] = [{
+  //   title: 'Mattress',
+  //   location: '700 Van Ness Ave.',
+  //   description: 'Somebody left their mattress on the side of the road.'
+  // },{
+  //   title: 'A really dirty alley',
+  //   location: '31 Spooner Street',
+  //   description: 'The alley behind my house is filthy'
+  // },{
+  //   title: 'Old couch',
+  //   location: '742 Evergreen Terrace',
+  //   description: 'somebody just dumped an old couch in the field right behind my house'
+  // }]
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public geolocation: Geolocation
+    public geolocation: Geolocation, public firebaseService:firebaseService
   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReportsPage');
+    this.loadReports();
   }
 
   // major s/o to JR for everything below 
 
   ngOnInit(): void {
     this.geolocation.getCurrentPosition().then((position:any) => {
-        this.myLat = position.coords.latitude;
-        this.myLong = position.coords.longitude;
+      this.myLat = position.coords.latitude;
+      this.myLong = position.coords.longitude;
         
     });
-}
+  }
+
+  loadReports(){
+    this.firebaseService.loadReports().pipe(take(1)).subscribe(res => {
+      this.reports = res;
+    })
+  }
 
   public getDistanceFromLatLonInMi(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km

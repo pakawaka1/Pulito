@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { ILocation } from '../../app/interfaces/location';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { firebaseService } from '../../app/services/firebase';
+import { take } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -26,7 +27,7 @@ export class MapPage {
               public geolocation: Geolocation, 
               private http: HttpClient, 
               private toastCtrl: ToastController,
-              private firebase: firebaseService) {}
+              private firebaseService: firebaseService) {}
   
   ionViewDidLoad(){
   }
@@ -59,9 +60,8 @@ export class MapPage {
   }
 
   loadRecycleMarkers() {
-    return this.firebase.loadRecyleLocations().subscribe((data) => { 
-      console.log(data)
-      this.addRecycleMarkersToMap(data);
+    return this.firebaseService.loadRecyleLocations().pipe(take(1)).subscribe((res) => { 
+      this.addRecycleMarkersToMap(res);
       },(err)=>{
         const toast = this.toastCtrl.create({
           message: 'Error in loading Recycle locations',
@@ -72,8 +72,8 @@ export class MapPage {
   }
 
   loadTrashMarkers() {
-    return this.firebase.loadTrashPlaces().subscribe((data) => { 
-      this.addTrashMarkersToMap(data);
+    return this.firebaseService.loadTrashPlaces().pipe(take(1)).subscribe((res) => { 
+      this.addTrashMarkersToMap(res);
       },(err)=>{
         const toast = this.toastCtrl.create({
           message: 'Error in loading Landfill locations',
@@ -85,7 +85,6 @@ export class MapPage {
 
   addRecycleMarkersToMap(markers) {
     for(let marker of markers) {
-      console.log(marker)
       const infowindow = new google.maps.InfoWindow({
         content: marker.name
       });
@@ -122,28 +121,28 @@ export class MapPage {
 
   bothMarkers(){
     for(let recycle of this.recycleList){
-      recycle.setMap(this.map)
+      recycle.setMap(this.map);
     };
     for(let trash of this.trashList){
-      trash.setMap(this.map)
+      trash.setMap(this.map);
     };
   }
 
   toggleTrash(){
     for(let recycle of this.recycleList){
-      recycle.setMap(null)
+      recycle.setMap(null);
     };
     for(let trash of this.trashList){
-      trash.setMap(this.map)
+      trash.setMap(this.map);
     };
   }
         
   toggleRecycle() {
     for(let trash of this.trashList){
-      trash.setMap(null)
+      trash.setMap(null);
     };
     for(let recycle of this.recycleList){
-      recycle.setMap(this.map)
+      recycle.setMap(this.map);
     };
   }
 }

@@ -11,7 +11,7 @@
         <button ion button color='white' class="top-left-icon" (click)="bothMarkers()"><i class="fa fa-recycle" aria-hidden="true"></i> / <i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
     </div>
-    <div class="card flex-container" *ngFor="let location of recycle">
+    <div class="card flex-container" *ngFor="let location of locations">
         <div class="card-left flex-container align-center justify-center flex-direction-column">
             <span>Icon</span>
             <span>{{ getDistanceFromLatLonInMi(location.lat, location.long, myLat, myLong) }} mi</span>
@@ -19,7 +19,9 @@
         </div>
         <div class="card-right flex-container flex-direction-column">
             <h3>{{ location.name }}</h3>
-            <p><strong>Type:</strong> {{ location.type }}</p>
+            <p><strong>Type:</strong></p>
+            <div  *ngFor="let type of location.type">{{ Center["landfill"] }} {{ type }}</div>
+  
             <p><strong>Address:</strong> {{ location.address }}</p>
             <p>{{ location.description }}</p>
         </div>

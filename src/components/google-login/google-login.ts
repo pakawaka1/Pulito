@@ -35,7 +35,7 @@ export class GoogleLoginService {
       return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
   
     } catch(err) {
-      console.log(err)
+   
     }
   }
 
@@ -45,13 +45,11 @@ export class GoogleLoginService {
       const credential = await this.afAuth.auth.signInWithPopup(provider);
   
     } catch(err) {
-      console.log(err)
     }
   
   }
 
   googleLogin() {
-    console.log('logging in');
     if (this.platform.is('cordova')) {
       this.nativeGoogleLogin();
     } else {

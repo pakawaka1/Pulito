@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Center } from './../../app/interfaces/center';
 import { firebaseService } from '../../app/services/firebase';
 import { ToastController } from 'ionic-angular';
+import { take } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -17,31 +18,18 @@ import { ToastController } from 'ionic-angular';
 })
 
 export class ListViewPage implements OnInit {
-    
     page: string = 'main';
     pageTitleKey: string = 'LISTVIEW_TITLE';
     pageTitle: string;
     public myLat;
     public myLong;
+    public loadRecycle: boolean = true;
+    public loadTrash: boolean = true;
     public recycle: any[];
     public trash: any[];
     public both: any[]= [];
-    // public staticLocations:ILocation[] = [{
-    //     lat: 36.702229,
-    //     long: -119.788517,
-    //     name: "Mid Valley Disposal",
-    //     // description: "The Disposal from the mid valley...",
-    //     // type: Center.landfill,
-    //     address: '1234 main st.'
-    // },
-    // {
-    //     lat: 36.685982,
-    //     long: -119.755236,
-    //     name: "Orange Avenue Disposal",
-    //     // description: "I like oranges...",
-    //     type: Center.landfill,
-    //     address: '5678 medium rd.'
-    // }]
+    public locations;
+    public Center: Center;
 
     constructor(public navCtrl: NavController,
         public settings: Settings,
@@ -49,37 +37,53 @@ export class ListViewPage implements OnInit {
         public navParams: NavParams,
         public geolocation: Geolocation,
         public translate: TranslateService,
-        public firebase: firebaseService,
-        private toastCtrl: ToastController) {
-            // this._database.list('/locations').push(fakePickup).then( resp => console.log('fake add', resp));
-            // this._database.list('/locations').valueChanges().subscribe(resp => console.log(resp));
-            // this.locations = this._database.list('locations');
-            // this.locations.snapshotChanges().subscribe(resp => console.log(resp))
-    }
+        public firebaseService: firebaseService,
+        private toastCtrl: ToastController) {}
 
     ngOnInit(): void {
-        this.loadRecycleMarkers()
-        this.loadTrashMarkers()
+        this.loadRecycleMarkers();
+        this.loadTrashMarkers();
         this.geolocation.getCurrentPosition().then((position:any) => {
             this.myLat = position.coords.latitude;
             this.myLong = position.coords.longitude;
         });
-
     }
+
+    ionViewWillEnter() {
+        this.load();
+    }
+
+    load(){
+        if(this.loadRecycle && this.loadTrash){
+            this.locations = this.both;
+        } else if(this.loadRecycle && !this.loadTrash){
+            this.locations = this.recycle;
+        } else {
+            this.locations = this.trash;
+        }
+    }
+
     loadRecycleMarkers() {
-        return this.firebase.loadRecyleLocations().subscribe((data) => { 
-          this.recycle = data
+        return this.firebaseService.loadRecyleLocations().pipe(take(1)).subscribe((res) => { 
+          this.recycle = res;
+          for(let item of this.recycle){
+              this.both.push(item)
+          }
           },(err)=>{
             const toast = this.toastCtrl.create({
               message: 'Error in loading Recycle locations',
               duration: 4000
             });
             toast.present();
-          });
+        
+        });
     }
     loadTrashMarkers() {
-        return this.firebase.loadTrashPlaces().subscribe((data) => { 
-            this.trash = data
+        return this.firebaseService.loadTrashPlaces().pipe(take(1)).subscribe((res) => { 
+            this.trash = res;
+            for(let item of this.trash){
+                this.both.push(item);
+            };
           },(err)=>{
             const toast = this.toastCtrl.create({
               message: 'Error in loading Landfill locations',
@@ -87,10 +91,25 @@ export class ListViewPage implements OnInit {
             });
             toast.present();
           });
-      }
-    
+    }
 
+    toggleRecycle(){
+        this.loadRecycle = true;
+        this.loadTrash = false;
+        this.load();
+    }
 
+    toggleTrash(){
+        this.loadRecycle = false;
+        this.loadTrash = true;
+        this.load();
+    }
+
+    bothMarkers(){
+        this.loadRecycle = true;
+        this.loadTrash = true;
+        this.load();
+    }
 
     public getDistanceFromLatLonInMi(lat1,lon1,lat2,lon2) {
         var R = 6371; // Radius of the earth in km
@@ -110,5 +129,5 @@ export class ListViewPage implements OnInit {
     
     private deg2rad(deg) {
         return deg * (Math.PI/180)
-        }
+    }
 }
