@@ -61,7 +61,7 @@ export class MapPage {
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
       const recycleMarker = new google.maps.Marker({position: position, 
                                                     title: marker.name, 
-                                                    icon: '../../assets/img/markers/recycle-01.png',
+                                                    icon: '../../assets/img/markers/recycle-icon.png',
                                                     type: 'recyle'});
       recycleMarker.setMap(this.map);
       google.maps.event.addListener(recycleMarker, 'click', () => {
@@ -86,7 +86,7 @@ export class MapPage {
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
       const trashMarker = new google.maps.Marker({position: position, 
                                                   title: marker.name,
-                                                  icon: '../../assets/img/markers/trash-02.png',
+                                                  icon: '../../assets/img/markers/trash-icon.png',
                                                   type: 'trash'});
       trashMarker.setMap(this.map);
       google.maps.event.addListener(trashMarker, 'click', () => {
