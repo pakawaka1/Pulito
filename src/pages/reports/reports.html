@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content padding class="body">
+  <button ion-button block (click)="openModal()" class="report-button">Create a New Report</button>
   <ion-card class="report-card" *ngFor="let report of reports">
     <div class="location flex-container align-center justify-center flex-direction-column">
       <span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></span>

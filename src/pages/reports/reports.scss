@@ -1,6 +1,13 @@
 page-reports {
     .body{
-        background-color:hsl(200, 30%, 96%);
+        background-color: var(--background-color);
+    }
+
+    button.report-button{
+        background-color: var(--pulito-green);
+        &.activated {
+            background-color: var(--pulito-green);
+          }
     }
     .report-card{
         display: grid;
