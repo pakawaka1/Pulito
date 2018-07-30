@@ -4,6 +4,8 @@ import { IReport } from '../../app/interfaces/report';
 import { Geolocation } from '@ionic-native/geolocation';
 import { firebaseService } from '../../app/services/firebase';
 import { take } from 'rxjs/operators';
+import { Modal, ModalController, ModalOptions } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the ReportsPage page.
@@ -18,35 +20,28 @@ import { take } from 'rxjs/operators';
   templateUrl: 'reports.html',
 })
 export class ReportsPage {
-
   public myLat;
   public myLong;
   public reports:IReport[];
 
-  // public reports:IReport[] = [{
-  //   title: 'Mattress',
-  //   location: '700 Van Ness Ave.',
-  //   description: 'Somebody left their mattress on the side of the road.'
-  // },{
-  //   title: 'A really dirty alley',
-  //   location: '31 Spooner Street',
-  //   description: 'The alley behind my house is filthy'
-  // },{
-  //   title: 'Old couch',
-  //   location: '742 Evergreen Terrace',
-  //   description: 'somebody just dumped an old couch in the field right behind my house'
-  // }]
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public geolocation: Geolocation, public firebaseService:firebaseService
+    public firebaseService:firebaseService,
+    public geolocation: Geolocation,
+    public modal : ModalController
   ) {
+  }
+
+  public openModal(){
+    const newReportModal: Modal = this.modal.create('ModalPage');
+
+    newReportModal.present();
+
+    console.log('Modal button does a thing!');
   }
 
   ionViewDidLoad() {
     this.loadReports();
   }
-
-  // major s/o to JR for everything below 
 
   ngOnInit(): void {
     this.geolocation.getCurrentPosition().then((position:any) => {

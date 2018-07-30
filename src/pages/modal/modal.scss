@@ -1,0 +1,18 @@
+page-modal {
+    .header{
+        color: #eee;
+    }
+    .toolbar-title{
+        color: #eee;
+    }
+    button.submit-button {
+        color: #eee;
+        background-color: var(--pulito-green);
+        &.activated {
+            background-color: var(--pulito-green);
+          }
+    }
+    .button-inner{
+        color: #eee;
+    }
+}
