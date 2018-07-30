@@ -18,10 +18,8 @@
         </div>
         <div class="card-right flex-container flex-direction-column">
             <h3>{{ location.name }}</h3>
+            <p class="list-location">{{ location.address }}</p>
             <p class="list-type"><strong>Type: </strong><span *ngFor="let type of location.type">{{ type }} </span></p>
-            <!-- <div  *ngFor="let type of location.type"><p>{{ type }}</p></div> -->
-  
-            <p class="list-location"><strong>Address:</strong> {{ location.address }}</p>
             <p class="list-description">{{ location.description }}</p>
         </div>
     </div>

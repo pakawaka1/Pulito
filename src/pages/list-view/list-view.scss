@@ -82,6 +82,7 @@ header {
 
         .fa{
             color: hsl(0, 0%, 70%);
+            margin-bottom: 5px;
         }
 }
 
@@ -92,14 +93,15 @@ header {
 }
 
 .card-right h3 {
-    margin: 10px 0px 3px 0px;
-    font-size: 20px;
+    margin: 10px 0px 7px 0px;
+    font-size: 22px;
     font-weight: 700;
 }
 
 .card-right {
     p{
         margin: 10px 0;
+        color: hsl(0, 0%, 40%);
 
     }
     .list-type{
@@ -109,7 +111,8 @@ header {
     }
     .list-location{
         margin: 0px;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 700;
     }
     .list-description{
         font-size: 14px;
