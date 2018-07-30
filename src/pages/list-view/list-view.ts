@@ -7,6 +7,8 @@ import { ILocation } from '../../app/interfaces/location';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Center } from './../../app/interfaces/center';
+import { firebaseService } from '../../app/services/firebase';
+import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -21,52 +23,74 @@ export class ListViewPage implements OnInit {
     pageTitle: string;
     public myLat;
     public myLong;
-    public staticLocations:ILocation[] = [{
-        lat: 36.702229,
-        long: -119.788517,
-        name: "Mid Valley Disposal",
-        description: "The Disposal from the mid valley...",
-        type: Center.landfill,
-        address: '1234 main st.'
-    },
-    {
-        lat: 36.685982,
-        long: -119.755236,
-        name: "Orange Avenue Disposal",
-        description: "I like oranges...",
-        type: Center.landfill,
-        address: '5678 medium rd.'
-    }]
+    public recycle: any[];
+    public trash: any[];
+    public both: any[]= [];
+    // public staticLocations:ILocation[] = [{
+    //     lat: 36.702229,
+    //     long: -119.788517,
+    //     name: "Mid Valley Disposal",
+    //     // description: "The Disposal from the mid valley...",
+    //     // type: Center.landfill,
+    //     address: '1234 main st.'
+    // },
+    // {
+    //     lat: 36.685982,
+    //     long: -119.755236,
+    //     name: "Orange Avenue Disposal",
+    //     // description: "I like oranges...",
+    //     type: Center.landfill,
+    //     address: '5678 medium rd.'
+    // }]
 
     constructor(public navCtrl: NavController,
         public settings: Settings,
         public formBuilder: FormBuilder,
         public navParams: NavParams,
-        // private _database: AngularFireDatabase,
         public geolocation: Geolocation,
-        public translate: TranslateService) {
-            // const fakePickup:ILocation = {
-            //     lat: 36.702229,
-            //     long: -119.788517,
-            //     name: "Mid Valley Disposal",
-            //     description: "The Disposal from the mid valley...",
-            //     type: "trash",
-            //     address: '1234 main st.'
-            // };
+        public translate: TranslateService,
+        public firebase: firebaseService,
+        private toastCtrl: ToastController) {
             // this._database.list('/locations').push(fakePickup).then( resp => console.log('fake add', resp));
             // this._database.list('/locations').valueChanges().subscribe(resp => console.log(resp));
             // this.locations = this._database.list('locations');
-            // console.log(this.locations);
             // this.locations.snapshotChanges().subscribe(resp => console.log(resp))
     }
 
     ngOnInit(): void {
+        this.loadRecycleMarkers()
+        this.loadTrashMarkers()
         this.geolocation.getCurrentPosition().then((position:any) => {
             this.myLat = position.coords.latitude;
             this.myLong = position.coords.longitude;
-            
         });
+
     }
+    loadRecycleMarkers() {
+        return this.firebase.loadRecyleLocations().subscribe((data) => { 
+          this.recycle = data
+          },(err)=>{
+            const toast = this.toastCtrl.create({
+              message: 'Error in loading Recycle locations',
+              duration: 4000
+            });
+            toast.present();
+          });
+    }
+    loadTrashMarkers() {
+        return this.firebase.loadTrashPlaces().subscribe((data) => { 
+            this.trash = data
+          },(err)=>{
+            const toast = this.toastCtrl.create({
+              message: 'Error in loading Landfill locations',
+              duration: 4000
+            });
+            toast.present();
+          });
+      }
+    
+
+
 
     public getDistanceFromLatLonInMi(lat1,lon1,lat2,lon2) {
         var R = 6371; // Radius of the earth in km

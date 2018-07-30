@@ -4,6 +4,10 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { ILocation } from '../../app/interfaces/location';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { firebaseService } from '../../app/services/firebase';
 
 @IonicPage()
 @Component({
@@ -17,8 +21,16 @@ export class MapPage {
   private recycleList: any[] = []; 
   private trashList: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, private http: HttpClient, private toastCtrl: ToastController ) { }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public geolocation: Geolocation, 
+              private http: HttpClient, 
+              private toastCtrl: ToastController,
+              private firebase: firebaseService) {}
   
+  ionViewDidLoad(){
+  }
+
   ionViewWillEnter() {
     this.loadMap();
   }
@@ -28,7 +40,7 @@ export class MapPage {
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: latLng,
-        zoom: 10, 
+        zoom: 12, 
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         fullscreenControl: false,
         streetViewControl: false
@@ -47,14 +59,33 @@ export class MapPage {
   }
 
   loadRecycleMarkers() {
-    this.http.get('../../assets/data/recycleMarkers.json')
-      .subscribe(data => {
-        this.addRecycleMarkersToMap(data);
-    });
+    return this.firebase.loadRecyleLocations().subscribe((data) => { 
+      console.log(data)
+      this.addRecycleMarkersToMap(data);
+      },(err)=>{
+        const toast = this.toastCtrl.create({
+          message: 'Error in loading Recycle locations',
+          duration: 4000
+        });
+        toast.present();
+      });
+  }
+
+  loadTrashMarkers() {
+    return this.firebase.loadTrashPlaces().subscribe((data) => { 
+      this.addTrashMarkersToMap(data);
+      },(err)=>{
+        const toast = this.toastCtrl.create({
+          message: 'Error in loading Landfill locations',
+          duration: 4000
+        });
+        toast.present();
+      });
   }
 
   addRecycleMarkersToMap(markers) {
     for(let marker of markers) {
+      console.log(marker)
       const infowindow = new google.maps.InfoWindow({
         content: marker.name
       });
@@ -71,14 +102,7 @@ export class MapPage {
     };
   }
 
-  loadTrashMarkers() {
-    this.http.get('../../assets/data/trashMarker.json')
-    .subscribe(data => {
-      this.addTrashMarkersToMap(data);
-    });
-  }
-
-    addTrashMarkersToMap(markers) {
+  addTrashMarkersToMap(markers) {
     for(let marker of markers) {
       const infowindow = new google.maps.InfoWindow({
         content: marker.name

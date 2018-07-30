@@ -11,7 +11,7 @@
         <button ion button color='white' class="top-left-icon" (click)="bothMarkers()"><i class="fa fa-recycle" aria-hidden="true"></i> / <i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
     </div>
-    <div class="card flex-container" *ngFor="let location of staticLocations">
+    <div class="card flex-container" *ngFor="let location of recycle">
         <div class="card-left flex-container align-center justify-center flex-direction-column">
             <span>Icon</span>
             <span>{{ getDistanceFromLatLonInMi(location.lat, location.long, myLat, myLong) }} mi</span>
