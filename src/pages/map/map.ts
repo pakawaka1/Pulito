@@ -4,6 +4,11 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { ILocation } from '../../app/interfaces/location';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { firebaseService } from '../../app/services/firebase';
+import { take } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -17,8 +22,16 @@ export class MapPage {
   private recycleList: any[] = []; 
   private trashList: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, private http: HttpClient, private toastCtrl: ToastController ) { }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public geolocation: Geolocation, 
+              private http: HttpClient, 
+              private toastCtrl: ToastController,
+              private firebaseService: firebaseService) {}
   
+  ionViewDidLoad(){
+  }
+
   ionViewWillEnter() {
     this.loadMap();
   }
@@ -28,7 +41,7 @@ export class MapPage {
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: latLng,
-        zoom: 10, 
+        zoom: 12, 
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         fullscreenControl: false,
         streetViewControl: false
@@ -47,10 +60,27 @@ export class MapPage {
   }
 
   loadRecycleMarkers() {
-    this.http.get('../../assets/data/recycleMarkers.json')
-      .subscribe(data => {
-        this.addRecycleMarkersToMap(data);
-    });
+    return this.firebaseService.loadRecyleLocations().pipe(take(1)).subscribe((res) => { 
+      this.addRecycleMarkersToMap(res);
+      },(err)=>{
+        const toast = this.toastCtrl.create({
+          message: 'Error in loading Recycle locations',
+          duration: 4000
+        });
+        toast.present();
+      });
+  }
+
+  loadTrashMarkers() {
+    return this.firebaseService.loadTrashPlaces().pipe(take(1)).subscribe((res) => { 
+      this.addTrashMarkersToMap(res);
+      },(err)=>{
+        const toast = this.toastCtrl.create({
+          message: 'Error in loading Landfill locations',
+          duration: 4000
+        });
+        toast.present();
+      });
   }
 
   addRecycleMarkersToMap(markers) {
@@ -61,7 +91,7 @@ export class MapPage {
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
       const recycleMarker = new google.maps.Marker({position: position, 
                                                     title: marker.name, 
-                                                    icon: '../../assets/img/markers/recycle-01.png',
+                                                    icon: '../../assets/img/markers/recycle-icon.png',
                                                     type: 'recyle'});
       recycleMarker.setMap(this.map);
       google.maps.event.addListener(recycleMarker, 'click', () => {
@@ -71,14 +101,7 @@ export class MapPage {
     };
   }
 
-  loadTrashMarkers() {
-    this.http.get('../../assets/data/trashMarker.json')
-    .subscribe(data => {
-      this.addTrashMarkersToMap(data);
-    });
-  }
-
-    addTrashMarkersToMap(markers) {
+  addTrashMarkersToMap(markers) {
     for(let marker of markers) {
       const infowindow = new google.maps.InfoWindow({
         content: marker.name
@@ -86,7 +109,7 @@ export class MapPage {
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
       const trashMarker = new google.maps.Marker({position: position, 
                                                   title: marker.name,
-                                                  icon: '../../assets/img/markers/trash-02.png',
+                                                  icon: '../../assets/img/markers/trash-icon.png',
                                                   type: 'trash'});
       trashMarker.setMap(this.map);
       google.maps.event.addListener(trashMarker, 'click', () => {
@@ -98,28 +121,28 @@ export class MapPage {
 
   bothMarkers(){
     for(let recycle of this.recycleList){
-      recycle.setMap(this.map)
+      recycle.setMap(this.map);
     };
     for(let trash of this.trashList){
-      trash.setMap(this.map)
+      trash.setMap(this.map);
     };
   }
 
   toggleTrash(){
     for(let recycle of this.recycleList){
-      recycle.setMap(null)
+      recycle.setMap(null);
     };
     for(let trash of this.trashList){
-      trash.setMap(this.map)
+      trash.setMap(this.map);
     };
   }
         
   toggleRecycle() {
     for(let trash of this.trashList){
-      trash.setMap(null)
+      trash.setMap(null);
     };
     for(let recycle of this.recycleList){
-      recycle.setMap(this.map)
+      recycle.setMap(this.map);
     };
   }
 }
