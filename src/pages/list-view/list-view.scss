@@ -2,6 +2,9 @@ body {
     text-align: center;
     font-family: sans-serif;
 }
+.body{
+    background-color: var(--background-color);
+}
 
 .list-view-title {
     height: 100%;
@@ -57,6 +60,7 @@ header {
     border-bottom: 2px solid #ddd;
     height: 30px;
     color: #ddd;
+    background-color: #fff;
 }
 
 .top-left-icon {
@@ -68,6 +72,7 @@ header {
 .card {
     border-bottom: 2px solid #ddd;
     padding: 20px;
+    background-color: #fff;
 }
 
 .card-left {
@@ -83,7 +88,9 @@ header {
 }
 
 .card-right h3 {
-    margin: 10px 0;
+    margin: 10px 0px 3px 0px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .card-right p {
