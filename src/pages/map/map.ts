@@ -18,6 +18,7 @@ export class MapPage implements OnDestroy {
   private trashList: any[] = [];
   public trashSub;
   public recycleSub;
+  public infoWindowContent;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -83,8 +84,10 @@ export class MapPage implements OnDestroy {
 
   addRecycleMarkersToMap(markers) {
     for(let marker of markers) {
+      this.infoWindowContent = '<strong>' + `${marker.name}` + '</strong>' + '<br>' + `${marker.address}`;
+
       const infowindow = new google.maps.InfoWindow({
-        content: marker.name
+        content: this.infoWindowContent
       });
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
       const recycleMarker = new google.maps.Marker({position: position, 
@@ -101,8 +104,10 @@ export class MapPage implements OnDestroy {
 
   addTrashMarkersToMap(markers) {
     for(let marker of markers) {
+      this.infoWindowContent = '<strong>' + `${marker.name}` + '</strong>' + '<br>' + `${marker.address}`;
+
       const infowindow = new google.maps.InfoWindow({
-        content: marker.name
+        content: this.infoWindowContent
       });
       const position = new google.maps.LatLng(marker.latitude, marker.longitude);
       const trashMarker = new google.maps.Marker({position: position, 
