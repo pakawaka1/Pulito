@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { IReport } from '../../app/interfaces/report';
+import { firebaseService } from '../../app/services/firebase';
 
 /**
  * Generated class for the ModalPage page.
@@ -13,17 +16,23 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   selector: 'page-modal',
   templateUrl: 'modal.html',
 })
-export class ModalPage {
+export class ModalPage{
+  public report:IReport[];
+  public title;
+  public location;
+  public description;
+  public subscription;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view:ViewController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public view:ViewController,
+              private firebaseService:firebaseService) {
   }
 
-  ionViewWillLoad() {
-    
-  }
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModalPage');
+  submit(form:IReport){
+    this.subscription = this.firebaseService.addReport(form).then(res => {
+      this.closeModal()
+    })
   }
 
   closeModal() {

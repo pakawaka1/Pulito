@@ -22,5 +22,9 @@ export class firebaseService {
     public loadReports(){
         return this._database.list<IReport>('/reports').valueChanges();
     }
+
+    public addReport(report){
+        return this._database.list<IReport>('/reports').push(report);
+    }
  
 }

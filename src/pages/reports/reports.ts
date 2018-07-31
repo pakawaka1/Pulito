@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IReport } from '../../app/interfaces/report';
 import { Geolocation } from '@ionic-native/geolocation';
 import { firebaseService } from '../../app/services/firebase';
-import { take } from 'rxjs/operators';
-import { Modal, ModalController, ModalOptions } from 'ionic-angular';
+import { Modal, ModalController } from 'ionic-angular';
 import { ModalPage } from '../modal/modal';
 
 /**
@@ -19,24 +18,26 @@ import { ModalPage } from '../modal/modal';
   selector: 'page-reports',
   templateUrl: 'reports.html',
 })
-export class ReportsPage {
+export class ReportsPage implements OnDestroy{
   public myLat;
   public myLong;
+  reportSub;
   public reports:IReport[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public firebaseService:firebaseService,
     public geolocation: Geolocation,
     public modal : ModalController
-  ) {
+  ) {}
+
+  ngOnDestroy (){
+    this.reportSub.unsubscribe();
   }
 
   public openModal(){
     const newReportModal: Modal = this.modal.create('ModalPage');
 
     newReportModal.present();
-
-    console.log('Modal button does a thing!');
   }
 
   ionViewDidLoad() {
@@ -52,7 +53,7 @@ export class ReportsPage {
   }
 
   loadReports(){
-    this.firebaseService.loadReports().pipe(take(1)).subscribe(res => {
+    this.reportSub = this.firebaseService.loadReports().subscribe(res => {
       this.reports = res;
     })
   }

@@ -1,14 +1,11 @@
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
 import { ILocation } from '../../app/interfaces/location';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { firebaseService } from '../../app/services/firebase';
-import { take } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -16,20 +13,23 @@ import { take } from 'rxjs/operators';
   templateUrl: 'map.html',
 })
 
-export class MapPage {
+export class MapPage implements OnDestroy {
   @ViewChild('map') mapElement: ElementRef;
   private map: any;
-  private recycleList: any[] = []; 
-  private trashList: any[] = [];
+  private recycleList: ILocation[] = []; 
+  private trashList: ILocation[] = [];
+  public trashSub;
+  public recycleSub;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public geolocation: Geolocation, 
-              private http: HttpClient, 
               private toastCtrl: ToastController,
               private firebaseService: firebaseService) {}
   
-  ionViewDidLoad(){
+  ngOnDestroy(){
+    this.trashSub.unsubscribe();
+    this.recycleSub.unsubscribe();
   }
 
   ionViewWillEnter() {
@@ -60,7 +60,7 @@ export class MapPage {
   }
 
   loadRecycleMarkers() {
-    return this.firebaseService.loadRecyleLocations().pipe(take(1)).subscribe((res) => { 
+    this.recycleSub = this.firebaseService.loadRecyleLocations().subscribe((res) => { 
       this.addRecycleMarkersToMap(res);
       },(err)=>{
         const toast = this.toastCtrl.create({
@@ -72,7 +72,7 @@ export class MapPage {
   }
 
   loadTrashMarkers() {
-    return this.firebaseService.loadTrashPlaces().pipe(take(1)).subscribe((res) => { 
+    this.trashSub = this.firebaseService.loadTrashPlaces().subscribe((res) => { 
       this.addTrashMarkersToMap(res);
       },(err)=>{
         const toast = this.toastCtrl.create({
