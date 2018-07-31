@@ -54,6 +54,7 @@ export class ReportsPage implements OnDestroy{
   loadReports(){
     this.reportSub = this.firebaseService.loadReports().subscribe(res => {
       this.reports = res;
+      this.reports.reverse();
     })
   }
 
