@@ -1,10 +1,8 @@
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
-import { HttpClient } from '@angular/common/http';
 import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-import { ILocation } from '../../app/interfaces/location';
 import { firebaseService } from '../../app/services/firebase';
 
 @IonicPage()
@@ -16,8 +14,8 @@ import { firebaseService } from '../../app/services/firebase';
 export class MapPage implements OnDestroy {
   @ViewChild('map') mapElement: ElementRef;
   private map: any;
-  private recycleList: ILocation[] = []; 
-  private trashList: ILocation[] = [];
+  private recycleList: any[] = []; 
+  private trashList: any[] = [];
   public trashSub;
   public recycleSub;
 

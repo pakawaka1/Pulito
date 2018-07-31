@@ -21,8 +21,8 @@ import { ModalPage } from '../modal/modal';
 export class ReportsPage implements OnDestroy{
   public myLat;
   public myLong;
-  reportSub;
   public reports:IReport[];
+  reportSub;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public firebaseService:firebaseService,
@@ -36,7 +36,6 @@ export class ReportsPage implements OnDestroy{
 
   public openModal(){
     const newReportModal: Modal = this.modal.create('ModalPage');
-
     newReportModal.present();
   }
 

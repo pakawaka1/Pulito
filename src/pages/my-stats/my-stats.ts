@@ -86,10 +86,7 @@ export class MyStatsPage {
             },
             options: {
                 aspectRatio: 1.7,
-                // responsive: true,
-                // borderWidth: 27,
                 legend: {
-                    // usePointStyle: true
                     fullWidth: false
                 },
                 tooltips: {
