@@ -17,7 +17,7 @@
   <ion-card class="report-card" *ngFor="let report of reports">
     <div class="location flex-container align-center justify-center flex-direction-column">
       <span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></span>
-      <span>{{ getDistanceFromLatLonInMi(report.lat, report.long, myLat, myLong) }} mi</span>
+      <span>{{ getDistanceFromLatLonInMi(report.latitude, report.longitude, myLat, myLong) }} mi</span>
       <span>Away</span>
     </div>
     <div class="description card-right flex-container flex-direction-column">
