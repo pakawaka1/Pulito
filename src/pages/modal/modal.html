@@ -17,15 +17,15 @@
 
 
 <ion-content padding>
-    <form #form="ngForm" novalidate>
+    <form #form="ngForm" novalidate (ngSubmit)="submit(form.value)">
       <ion-item>
-        <ion-input type="text" required ngControl="title" placeholder="Title of Report"></ion-input>
+        <ion-input type="text" required name="title" [ngModel]="title" placeholder="Title of Report"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" required ngControl="location" placeholder="Address or Location"></ion-input>
+        <ion-input type="text" required name="location" [ngModel]="location" placeholder="Address or Location"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-textarea ngControl="description" placeholder="Description"></ion-textarea>
+        <ion-textarea name="description" [ngModel]="description" placeholder="Description"></ion-textarea>
       </ion-item>
       <button ion-button type="submit" block class="submit-button">Create Report</button>
     </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Settings } from '../../providers';
 import { FormBuilder } from '../../../node_modules/@angular/forms';
@@ -9,7 +9,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Center } from './../../app/interfaces/center';
 import { firebaseService } from '../../app/services/firebase';
 import { ToastController } from 'ionic-angular';
-import { take } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -17,7 +16,7 @@ import { take } from 'rxjs/operators';
     templateUrl: 'list-view.html',
 })
 
-export class ListViewPage implements OnInit {
+export class ListViewPage implements OnInit, OnDestroy {
     page: string = 'main';
     pageTitleKey: string = 'LISTVIEW_TITLE';
     pageTitle: string;
@@ -30,6 +29,8 @@ export class ListViewPage implements OnInit {
     public both: any[]= [];
     public locations;
     public Center: Center;
+    public trashSub;
+    public recycleSub;
 
     constructor(public navCtrl: NavController,
         public settings: Settings,
@@ -49,6 +50,11 @@ export class ListViewPage implements OnInit {
         });
     }
 
+    ngOnDestroy(){
+        this.trashSub.unsubscribe();
+        this.recycleSub.unsubscribe();
+    }
+
     ionViewWillEnter() {
         this.load();
     }
@@ -64,7 +70,7 @@ export class ListViewPage implements OnInit {
     }
 
     loadRecycleMarkers() {
-        return this.firebaseService.loadRecyleLocations().pipe(take(1)).subscribe((res) => { 
+        this.recycleSub =  this.firebaseService.loadRecyleLocations().subscribe((res) => { 
           this.recycle = res;
           for(let item of this.recycle){
               this.both.push(item)
@@ -79,7 +85,7 @@ export class ListViewPage implements OnInit {
         });
     }
     loadTrashMarkers() {
-        return this.firebaseService.loadTrashPlaces().pipe(take(1)).subscribe((res) => { 
+        this.trashSub = this.firebaseService.loadTrashPlaces().subscribe((res) => { 
             this.trash = res;
             for(let item of this.trash){
                 this.both.push(item);
