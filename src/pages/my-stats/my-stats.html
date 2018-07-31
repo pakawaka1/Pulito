@@ -22,17 +22,18 @@
 
   
 
-  <ion-card>
+  <ion-card class="stats-card">
     <ion-card-content>
       <canvas #wasteCanvas></canvas>
     </ion-card-content>
     <h5 class="waste-removed">You have removed <strong>{{totalWaste}}lbs</strong> of waste from our beautiful planet!</h5>
-    
   </ion-card>
-  <ion-card>
+
+  <ion-card class="stats-card">
     <ion-card-content>
       <canvas #calcWasteCanvas></canvas>
     </ion-card-content>
+    <h5>Here's breakdown of all the waste you've removed</h5>
   </ion-card>
   <!-- <div class="breakdown">
     <p>Breakdown of your recycling</p>
