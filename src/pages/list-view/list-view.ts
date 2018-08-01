@@ -3,8 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Settings } from '../../providers';
 import { FormBuilder } from '../../../node_modules/@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ILocation } from '../../app/interfaces/location';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Center } from './../../app/interfaces/center';
 import { firebaseService } from '../../app/services/firebase';

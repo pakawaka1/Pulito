@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { NgForm } from '@angular/forms';
 import { IReport } from '../../app/interfaces/report';
 import { firebaseService } from '../../app/services/firebase';
 

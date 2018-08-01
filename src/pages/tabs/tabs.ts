@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { DomSanitizer } from "@angular/platform-browser";
 
 import { Camera, CameraOptions } from "@ionic-native/camera";
 
@@ -52,7 +51,8 @@ export class TabsPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      let base64Image = "data:image/jpeg;base64," + imageData;
+      // TODO: something with the picture
+      // let base64Image = "data:image/jpeg;base64," + imageData;
     }, (err) => {
     })
   }
