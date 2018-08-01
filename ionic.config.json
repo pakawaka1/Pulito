@@ -1,9 +1,7 @@
 {
-    "name": "cucumber",
-    "app_id": "",
-    "type": "ionic-angular",
-    "integrations": {
-      "cordova": {}
-    }
+  "name": "cucumber",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
 }
-  

@@ -1,3 +1,11 @@
+<ion-menu [content]="content">
+  <ion-content>
+    <ion-list>
+      <ion-item menuToggle>Logout</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
 <!-- <ion-content> -->
 <ion-fab center bottom>
   <button ion-fab class="camera-button" (click)="onTakePicture()"><ion-icon name="add"></ion-icon></button>
@@ -12,3 +20,4 @@
   <ion-tab [root]="tab4Root" tabTitle="Reports" tabIcon="text"></ion-tab>
   <ion-tab [root]="tab5Root" tabTitle="My Stats" tabIcon="pie"></ion-tab>
 </ion-tabs>
+
