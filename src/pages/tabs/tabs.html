@@ -1,13 +1,11 @@
-
-<ion-icon name="menu"></ion-icon>
-
-<ion-content>
+<ion-nav #content>
+  <ion-icon name="menu"></ion-icon>
   <ion-list>
     <button ion-item menuToggle *ngFor="let page of pages" (click)="openPage(page)">
       {{ page.title }}
     </button>
   </ion-list>
-</ion-content>
+</ion-nav>
 <!-- <ion-content> -->
 <ion-fab center bottom>
   <button ion-fab class="camera-button" (click)="onTakePicture()"><ion-icon name="add"></ion-icon></button>
