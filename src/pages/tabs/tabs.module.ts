@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { TabsPage } from './tabs';
+import { GoogleLoginService } from '../../components/google-login/google-login';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,9 @@ import { TabsPage } from './tabs';
   imports: [
     IonicPageModule.forChild(TabsPage),
     TranslateModule.forChild()
+  ],
+  providers: [
+    GoogleLoginService
   ],
   exports: [
     TabsPage
