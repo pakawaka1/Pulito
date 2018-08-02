@@ -58,7 +58,7 @@ export class TabsPage {
 
 
   logout() {
-   this.googleLogin.signOut();
+  //  this.googleLogin.signOut();
    this.navCtrl.push(FirstRunPage);
   }
 }
