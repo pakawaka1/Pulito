@@ -8,7 +8,7 @@ import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
 
 @Component({
-  template: '<ion-nav #content [root]="rootPage"></ion-nav>'
+  template: `<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
   rootPage = FirstRunPage;

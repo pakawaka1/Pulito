@@ -3,10 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Camera, CameraOptions } from "@ionic-native/camera";
-
-
-
-import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root } from '../';
+import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root, FirstRunPage } from '../';
 
 @IonicPage()
 @Component({
@@ -56,4 +53,15 @@ export class TabsPage {
     }, (err) => {
     })
   }
+
+
+  logout() {
+    try {
+      this.navCtrl.push(FirstRunPage);
+    }
+      catch {
+        { message: 'Sorry, an error occured.'}
+      }
+  }
 }
+

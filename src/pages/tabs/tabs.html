@@ -1,11 +1,7 @@
-<ion-nav #content>
-  <ion-icon name="menu"></ion-icon>
-  <ion-list>
-    <button ion-item menuToggle *ngFor="let page of pages" (click)="openPage(page)">
-      {{ page.title }}
-    </button>
-  </ion-list>
-</ion-nav>
+<ion-content text-left padding>
+  <button class="logout-button" (click)="logout()">Logout</button>
+</ion-content>
+
 <!-- <ion-content> -->
 <ion-fab center bottom>
   <button ion-fab class="camera-button" (click)="onTakePicture()"><ion-icon name="add"></ion-icon></button>
@@ -20,4 +16,5 @@
   <ion-tab [root]="tab4Root" tabTitle="Reports" tabIcon="text"></ion-tab>
   <ion-tab [root]="tab5Root" tabTitle="My Stats" tabIcon="pie"></ion-tab>
 </ion-tabs>
+
 
