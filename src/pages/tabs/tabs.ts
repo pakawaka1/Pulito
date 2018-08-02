@@ -29,7 +29,7 @@ export class TabsPage {
     public navParams: NavParams,
     private camera: Camera,
     public alertCtrl: AlertController,
-    private googleLogout: GoogleLoginService) {
+    private googleLogin: GoogleLoginService) {
     // translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE', 'TAB3_TITLE']).subscribe(values => {
     //   this.tab1Title = values['TAB1_TITLE'];
     //   this.tab2Title = values['TAB2_TITLE'];
@@ -58,7 +58,7 @@ export class TabsPage {
 
 
   logout() {
-   this.googleLogout.signOut();
+   this.googleLogin.signOut();
    this.navCtrl.push(FirstRunPage);
   }
 }
