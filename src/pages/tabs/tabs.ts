@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
+import { GoogleLoginService } from '../../components/google-login/google-login';
 import { Camera, CameraOptions } from "@ionic-native/camera";
-import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root, FirstRunPage } from '../';
+import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root, FirstRunPage} from '../';
 
 @IonicPage()
 @Component({
@@ -17,6 +17,7 @@ export class TabsPage {
   tab4Root: any = Tab4Root;
   tab5Root: any = Tab5Root;
 
+  
   // For translating service tabs only, tabs are set my html
   // tab1Title = " ";
   // tab2Title = " ";
@@ -27,7 +28,8 @@ export class TabsPage {
     public translateService: TranslateService,
     public navParams: NavParams,
     private camera: Camera,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private googleLogout: GoogleLoginService) {
     // translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE', 'TAB3_TITLE']).subscribe(values => {
     //   this.tab1Title = values['TAB1_TITLE'];
     //   this.tab2Title = values['TAB2_TITLE'];
@@ -56,12 +58,8 @@ export class TabsPage {
 
 
   logout() {
-    try {
-      this.navCtrl.push(FirstRunPage);
-    }
-      catch {
-        { message: 'Sorry, an error occured.'}
-      }
+   this.googleLogout.signOut();
+   this.navCtrl.push(FirstRunPage);
   }
 }
 
